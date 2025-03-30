@@ -12,6 +12,18 @@ document.getElementById("contactForm").addEventListener("submit", function(event
         message: document.getElementById("message").value
     };
     
-    console.log("Form Data Submitted:", formData);
-    alert("Form submitted successfully!");
+    fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert("Form submitted successfully!");
+        document.getElementById("contactForm").reset();
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("There was an error submitting the form.");
+    });
 });
