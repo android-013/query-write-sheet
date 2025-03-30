@@ -1,7 +1,13 @@
 function doPost(e) {
     try {
       var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
-      var data = JSON.parse(e.postData.contents);
+      
+      // Parse form data
+      var data = {};
+      var params = e.parameter;
+      for (var key in params) {
+        data[key] = decodeURIComponent(params[key]) || "";
+      }
       
       // Append data as a new row
       sheet.appendRow([
@@ -9,10 +15,10 @@ function doPost(e) {
         data.name,
         data.email,
         data.phone,
-        data.address || "",
-        data.whatsapp || "",
-        data.github || "",
-        data.linkedin || "",
+        data.address,
+        data.whatsapp,
+        data.github,
+        data.linkedin,
         data.message
       ]);
       

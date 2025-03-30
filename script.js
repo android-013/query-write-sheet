@@ -2,25 +2,29 @@ document.getElementById("contactForm").addEventListener("submit", function(event
     event.preventDefault();
     
     let formData = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        address: document.getElementById("address").value,
-        whatsapp: document.getElementById("whatsapp").value,
-        github: document.getElementById("github").value,
-        linkedin: document.getElementById("linkedin").value,
-        message: document.getElementById("message").value
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        address: document.getElementById("address").value.trim(),
+        whatsapp: document.getElementById("whatsapp").value.trim(),
+        github: document.getElementById("github").value.trim(),
+        linkedin: document.getElementById("linkedin").value.trim(),
+        message: document.getElementById("message").value.trim()
     };
-    
-    fetch("https://script.google.com/macros/s/AKfycbxUPVrL6yIS8vcTL1_xVr0udWp59buMwTfKpWKwaQp0jbf9dOAb-kRPE8CMNxZkyLb8/exec", {
+
+    fetch("https://script.google.com/macros/s/AKfycbz0Sjk64fFJYVxizWB9KJSbr-OTEfevIvJRLDME74yuh4XTTRxMGWZcJyWU62i7ig7L9w/exec", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData)
     })
     .then(response => response.text())
     .then(data => {
-        alert("Form submitted successfully!");
-        document.getElementById("contactForm").reset();
+        if (data.includes("Success")) {
+            alert("Form submitted successfully!");
+            document.getElementById("contactForm").reset();
+        } else {
+            throw new Error("Form submission failed.");
+        }
     })
     .catch(error => {
         console.error("Error:", error);
