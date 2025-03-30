@@ -12,7 +12,7 @@ document.getElementById("contactForm").addEventListener("submit", function(event
         message: document.getElementById("message").value
     };
     
-    fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
+    fetch("https://script.google.com/macros/s/AKfycbxUPVrL6yIS8vcTL1_xVr0udWp59buMwTfKpWKwaQp0jbf9dOAb-kRPE8CMNxZkyLb8/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
