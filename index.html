@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <label for="name">Name *</label>
+            <input type="text" id="name" required>
+            
+            <label for="email">Email *</label>
+            <input type="email" id="email" required>
+            
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" required>
+            
+            <label for="address">Address (Optional)</label>
+            <input type="text" id="address">
+            
+            <label for="whatsapp">WhatsApp (Optional)</label>
+            <input type="tel" id="whatsapp">
+            
+            <label for="github">GitHub Link (Optional)</label>
+            <input type="url" id="github">
+            
+            <label for="linkedin">LinkedIn Link (Optional)</label>
+            <input type="url" id="linkedin">
+            
+            <label for="message">Your Request/Query *</label>
+            <textarea id="message" rows="5" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                address: document.getElementById("address").value,
+                whatsapp: document.getElementById("whatsapp").value,
+                github: document.getElementById("github").value,
+                linkedin: document.getElementById("linkedin").value,
+                message: document.getElementById("message").value
+            };
+            
+            console.log("Form Data Submitted:", formData);
+            alert("Form submitted successfully!");
+        });
+    </script>
+</body>
+</html>
