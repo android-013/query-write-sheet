@@ -1,6 +1,6 @@
 function doPost(e) {
     try {
-      var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
+      var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet2");
       
       // Parse form data
       var data = {};
