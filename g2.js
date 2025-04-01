@@ -19,6 +19,7 @@ function doPost(e) {
         data.whatsapp,
         data.github,
         data.linkedin,
+        data.subject,
         data.message
       ]);
       
